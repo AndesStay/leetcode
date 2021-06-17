@@ -1,0 +1,24 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "cmake task",
+            "command": "cmake",
+            "args": ["-G", "Unix Makefiles", "-DCMAKE_BUILD_TYPE=Debug", ".." ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+        },
+        {
+            "type": "shell",
+            "label": "make task",
+            "command": "make",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "dependsOn":"cmake task",
+        }
+    ],
+    "version": "2.0.0"
+}
