@@ -9,9 +9,8 @@
 
 int main()
 {
-    string test = "we are happy";
-    string res = replaceSpace(test);
-
-    cout << res.c_str() << endl;
+    int a = 1, b = 2;
+    int c = add_lib(a, b);
+    cout << "result : "<< c << endl;
     return 0;
 }
