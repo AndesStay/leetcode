@@ -1,17 +1,21 @@
+#include "leetcode.h"
+
 /***************************
  * Description : leetcode练习仿真调试用
  * Create : 2021.06.01
- * Name : Liulihong
  * **************************/
-#include "leetcode.h"
-
-/*
-* Description : 测试用
-* Create : 2021.6.17
-*/
-int add_lib(int a, int b)
+vector< vector<int> > VectorSum(vector<int>& nums) 
 {
-    return a+b;
+    vector< vector<int> > ans;
+
+    sort(nums.begin(), nums.end());
+    int len = nums.size();
+    int *p = &nums[0], *q = &nums[len - 1], *m = p + 1;
+    
+    ans.push_back({*p, *(p+1)});
+    ans.push_back({*(q-1), *q});
+
+    return ans;
 }
 
 
@@ -21,25 +25,36 @@ int add_lib(int a, int b)
  * **************************/
 vector< vector<int> > threeSum(vector<int>& nums) 
 {
+    sort(nums.begin(), nums.end());
+    vector<vector<int>> ans;
+    int len = nums.size();
+    int *p = &nums[0], *q = &nums[len - 1], *m = p + 1, sum;
 
-    // // 去除重复元素
-    // sort(nums.begin(), nums.end());
-    // int len = nums.size(), left, right;
-    // for(left = 0, right = 1; right < len; )
-    // {
-    //     if(nums[left] == nums[right])
-    //     {
-    //         right++;
-    //     }
-    //     else
-    //     {
-    //         left++;
-    //         nums[left] = nums[right];
-    //         right++;
-    //     }
-    // }
-    // cout << "It's OK." << endl;
+    while(p != &nums[len - 1])
+    {
+        m = p + 1;
+        while(m < q)
+        {
+            sum = *p + *q + *m;
+            if(sum < 0)
+            {
+                m++;
+                continue;
+            }
+            else if(sum > 0)
+                break;
+            else
+            {
+                ans.push_back({*p, *m, *q});
+                break;  // 防止重复
+            }
+        }
+        // p向前移动，防止重复
+        while(*(p+1) == (*p))
+            p++;
+    }
 
+    return ans;
 }
 
 /*****************************

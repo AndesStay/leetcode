@@ -9,8 +9,17 @@
 
 int main()
 {
-    int a = 1, b = 2;
-    int c = add_lib(a, b);
-    cout << "result : "<< c << endl;
+    vector<int> test{-1,0,1,2,-1,-4};
+    vector< vector<int> > ans;
+    ans = threeSum(test);
+    int len = ans.size();
+    for(int i = 0; i < len; i++)
+    {
+        for(auto j : ans[i])
+        {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }

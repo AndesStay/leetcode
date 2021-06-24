@@ -10,13 +10,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 /*
 * Description : 测试用
 * Create : 2021.6.17
 */
-int add_lib(int a, int b);
+vector< vector<int> > VectorSum(vector<int>& nums);
 
 /*****************************
  * Description : 15, 三数之和
