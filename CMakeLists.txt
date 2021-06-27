@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.12)
 project(leetcode)
 
+# set(CMAKE_SYSTEM_NAME Linux)
+
+# set(TOOLCHAIN_PATH /usr/local)
+# set(CMAKE_C_COMPILER /usr/local/bin/gcc-10)
+# set(CMAKE_CXX_COMPILER /usr/local/bin/g++-10)
+
 add_subdirectory(leetcode)
 
 set(HDRS

@@ -26,32 +26,42 @@ vector< vector<int> > VectorSum(vector<int>& nums)
 vector< vector<int> > threeSum(vector<int>& nums) 
 {
     sort(nums.begin(), nums.end());
-    vector<vector<int>> ans;
-    int len = nums.size();
-    int *p = &nums[0], *q = &nums[len - 1], *m = p + 1, sum;
+    vector< vector<int> > ans;
+    int len = nums.size(), first, left, right, sum;
 
-    while(p != &nums[len - 1])
+    for(first = 0; first < len; first++)//第一层循环，0-(len-1)
     {
-        m = p + 1;
-        while(m < q)
+        // 首元素大于0，直接返回`
+        if(nums[first] > 0)
+            return ans;
+
+        // first递增时去重
+        if(first > 0 && nums[first] == nums[first-1])
+            continue;
+
+        left = first + 1; right = len - 1;//第二层循环，双指针起始位置
+        while(left < right)
         {
-            sum = *p + *q + *m;
-            if(sum < 0)
+            sum = nums[first] + nums[left] + nums[right];
+            if(sum > 0)
             {
-                m++;
-                continue;
+                right--;
             }
-            else if(sum > 0)
-                break;
+            else if(sum < 0)
+            {
+                left++;
+            }
             else
             {
-                ans.push_back({*p, *m, *q});
-                break;  // 防止重复
+                ans.push_back({nums[first], nums[left], nums[right]});
+                //双指针去重
+                while((right > left) && (nums[right] == nums[right-1])) right--;
+                while((right > left) && (nums[left] == nums[left+1])) left++;
+
+                left++;
+                right--;
             }
         }
-        // p向前移动，防止重复
-        while(*(p+1) == (*p))
-            p++;
     }
 
     return ans;
