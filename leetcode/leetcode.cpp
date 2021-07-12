@@ -1,6 +1,48 @@
 #include "leetcode.h"
 
 /***************************
+ * Description : 142环形链表
+ * Create : 2021.06.28
+ * **************************/
+ListNode *detectCycle(ListNode *head) {
+    if(head == nullptr || head->next == nullptr)
+        return nullptr;
+    ListNode *slow = head, *fast = head->next;
+    while(slow != fast)
+    {
+        if(slow->next == nullptr || fast->next == nullptr || fast->next->next == nullptr)
+            return nullptr;
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast)
+            break;
+    }
+    return slow;
+}
+
+/***************************
+ * Description : 141环形链表
+ * Create : 2021.06.28
+ * **************************/
+bool hasCycle(ListNode *head) {
+    //0 or 1 special ocassion 
+    if(head == NULL || head->next == NULL)
+        return false;
+    ListNode *slow = head, *fast = head->next;
+    while(slow != fast)
+    {
+        if(slow->next == NULL)
+            return false;
+        if(fast->next == NULL || fast->next->next == NULL)
+            return false;
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return true;
+}
+
+
+/***************************
  * Description : leetcode练习仿真调试用
  * Create : 2021.06.01
  * **************************/

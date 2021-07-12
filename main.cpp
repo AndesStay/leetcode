@@ -9,19 +9,14 @@
 
 int main()
 {
-    vector<int> test{-1,0,1,2,-1,-4};
-    vector< vector<int> > ans;
-    ans = threeSum(test);
-    int len = ans.size();
-    for(int i = 0; i < len; i++)
-    {
-        for(auto j : ans[i])
-        {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
-
+    // ListNode *head = new ListNode(1); 
+    // head->next = head; 
+    ListNode *head = new ListNode(3); ListNode *second = new ListNode(2);
+    ListNode *third = new ListNode(0); ListNode *forth = new ListNode(-4);
+    head->next = second; second->next= third; third->next = forth; forth->next = second;
+    // bool ans = hasCycle(head);
+    ListNode *ans = new ListNode(0);
+    ans = detectCycle(head);
     return 0;
     
 }

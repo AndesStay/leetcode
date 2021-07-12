@@ -13,6 +13,30 @@
 #include <algorithm>
 using namespace std;
 
+
+/***************************
+ * Description : 142环形链表
+ * Create : 2021.06.28
+ * **************************/
+struct ListNode {
+     int val;
+     ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+ };
+
+/***************************
+ * Description : 142环形链表
+ * Create : 2021.06.28
+ * **************************/
+ListNode *detectCycle(ListNode *head);
+
+/***************************
+ * Description : 142环形链表
+ * Create : 2021.06.28
+ * **************************/
+ 
+bool hasCycle(ListNode *head);
+
 /*
 * Description : 测试用
 * Create : 2021.6.17
