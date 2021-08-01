@@ -1,5 +1,90 @@
 #include "leetcode.h"
 
+/*
+* Description : 151反转字符串单词
+* Create : 2021.07.12
+*/
+string reverseWords(string &s) {
+    string ans1 = delspace(s);
+    string ans2 = reverseStr(ans1, 0, ans1.size() - 1);
+    string ans3 = reverseEveryWord(ans2);
+    return ans3;
+
+}
+
+/*
+* Description : 151反转字符串单词 (3) 字符串中单词反转
+* Create : 2021.8.1
+*/
+string reverseEveryWord(string &s)
+{
+    int front = 0, back = 0;
+    // back到达第一个词的结尾,可能字符串只有一个词
+    while(back + 1 < s.size() && s[back + 1] != ' ') 
+            back++;
+
+    while(front < s.size() && back < s.size())
+    {
+        s = reverseStr(s, front, back);
+
+        front = back + 2; // 下一个词的词头
+        back = front;
+        // 词尾2中情况：1.遇到空格 2.超出size
+        while(back + 1 < s.size() && s[back + 1] != ' ') 
+            back++;
+    }
+
+    return s;
+}
+
+/*
+* Description : 151反转字符串单词 (2) 整个字符串反转
+* Create : 2021.8.1
+*/
+string reverseStr(string &s, int front, int back)
+{
+    // int front = 0, back = s.size() - 1;
+    while(front < back)
+    {
+        char tmp = s[front];
+        s[front++] = s[back];
+        s[back--] = tmp;
+    }
+    return s;
+}
+
+/*
+* Description : 151反转字符串单词 (1) 删除多余空格
+* Create : 2021.8.1
+*/
+string delspace(string &s)
+{
+    // 确定字符串非空
+    int len = s.size();
+    string ans = " ";
+    if(len < 0)
+        return ans;
+
+    // 首先去掉空格
+    int slow = 0, fast = 0;
+    while(fast < len && s[fast] == ' ')
+        fast++;
+    for(; fast < len; fast++)
+    {
+        // 去除单词间多余空格
+        if((fast - 1) > 0 && s[fast] == s[fast-1] && s[fast] == ' ')
+            continue;
+        else
+            s[slow++] = s[fast];
+    }
+    // 可能最后一个字符是空格
+    if(slow - 1 > 0 && s[slow-1] == ' ')
+        s.resize(slow - 1);
+    else
+        s.resize(slow);
+    return s;
+}
+
 /***************************
  * Description : 142环形链表
  * Create : 2021.06.28

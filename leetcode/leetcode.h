@@ -14,6 +14,33 @@
 using namespace std;
 
 
+
+/*
+* Description : 151反转字符串单词 (2) 整个字符串反转
+* Create : 2021.8.1
+*/
+string reverseStr(string &s, int front, int back);
+
+/*
+* Description : 151反转字符串单词 (3) 字符串中单词反转
+*C reate : 2021.8.1
+*/
+string reverseEveryWord(string &s);
+
+
+/*
+* Description : 151反转字符串单词 (1) 删除多余空格
+*C reate : 2021.07.12
+*/
+string delspace(string &s);
+
+/*
+* Description : 151反转字符串单词
+*C reate : 2021.07.12
+*/
+string reverseWords(string &s);
+
+
 /***************************
  * Description : 142环形链表
  * Create : 2021.06.28

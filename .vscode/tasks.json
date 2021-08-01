@@ -18,6 +18,15 @@
                 "cwd": "${workspaceFolder}/build"
             },
             "dependsOn":"cmake task",
+        },
+        {
+            "type": "shell",
+            "label": "build task",
+            "command": "sh",
+            "args": ["./build.sh"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
         }
     ],
     "version": "2.0.0"
